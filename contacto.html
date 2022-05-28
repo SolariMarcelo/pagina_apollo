@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <script src="https://kit.fontawesome.com/157f4f0b02.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="img/space.png" type="image/png">
+
+
+
+    <title>Consola Apollo-Contacto</title>
+</head>
+<style>
+    .contact-form {
+
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+    }
+
+    .contact-form>* {
+        padding: 0.5rem;
+        margin: 1rem auto;
+        display: block;
+        width: 100%;
+        border-radius: 5px;
+        border-color: aqua;
+    }
+
+    .contact-form-legend,
+    .contact-form-response {
+
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 1rem;
+        font-family: sans-serif;
+    }
+
+    .contact-form button[type="button"] {
+        width: 50%;
+        font-weight: bold;
+        cursor: pointer;
+
+
+    }
+
+    .contact-form button[type="button"]:hover {
+        box-shadow: 0.4rem 0.4rem 0.4rem rgb(247, 0, 255);
+
+        transition: box-shadow 0.2s ease-in;
+
+    }
+
+    h2 {
+        text-align: center;
+    }
+</style>
+
+<body>
+    <header id="header"></header>
+    <h2>Formulario de Contacto</h2>
+
+
+    <form class="contact-form" action="">
+        <input id="a" type="text" name="name" placeholder="Escriba su nombre aqui">
+        <input id="e" type="email" name="email" placeholder="Escriba su email" title="Email Incorrecto"
+            pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$" required>
+        <input id="i" type="text" name="asunto" placeholder="Asunto a tratar . . ."
+            title="El asunto a tratar es requerido" required>
+        <textarea id="o" name="comments" cols="50" rows="10" placeholder="Escriba sus comentarios. . . "
+            title="Tu comentario no debe superar los 255 caracteres" data-pattern="^.{1,255}$" required></textarea>
+
+        <button type="button" onclick="myFunction()">Submit</button>
+
+    </form>
+
+
+    <p id="demo"></p>
+
+    <script>
+
+
+        function myFunction() {
+            // Get the value of the input field with id="numb"
+            let v = document.getElementById("a").value;
+            let x = document.getElementById("e").value;
+            let y = document.getElementById("i").value;
+            let z = document.getElementById("o").value;
+
+
+
+            // If x is Not a Number or less than one or greater than 10
+            let text;
+
+
+
+            if (v == "" || x == "" || y == "" || z == "") {
+                text = "Datos incorrectos";
+            } else {
+                text = "Nombre: " + v + " Email: " + x + " Asunto: " + y + " Comentarios: " + z;
+            }
+            document.getElementById("demo").innerHTML = text;
+
+
+
+
+
+
+
+        }
+
+    
+
+    </script>
+
+    <footer id="footer"></footer>
+    <script src="main.js"></script>
+
+
+</body>
