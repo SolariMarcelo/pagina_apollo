@@ -37,6 +37,9 @@ producto_schema=ProductoSchema()            # para crear un producto
 productos_schema=ProductoSchema(many=True)  # multiples registros
 
 # programo los mapeos, o las rutas, o los endpoints, la URL
+@app.route('/')
+...
+
 @app.route('/productos',methods=['GET'])
 def get_Productos():
     all_productos=Producto.query.all()     # query.all() lo hereda de db.Model
