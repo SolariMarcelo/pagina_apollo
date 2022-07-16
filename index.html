@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -8,127 +8,65 @@
     <link rel="stylesheet" href="estilos.css">
     <script src="https://kit.fontawesome.com/157f4f0b02.js" crossorigin="anonymous"></script>
     <link rel="icon" href="img/space.png" type="image/png">
-    <title>Consola Apollo</title>
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 </head>
 
 <body>
-    <header id="header">
-
-    </header>
-
-
-
-
-    <div class="banner">
-        <p>Un viaje al pasado</p>
-    </div>
-
-    <div class="banner2">
-        <div class="informacion">
-            <h2>Revive los clasicos</h2>
-            <ol>
-                <li>Arquitectura de velocidad</li>
-                <li>Biblioteca de juegos en expansion</li>
-                <li>Game Pass exclusivo</li>
-                <li>Hasta 120 FPS</li>
-            </ol>
+    <header id="header"></header>
+    <main>
+        <div class="container" id="app">
+            <h1>Juegos</h1>
+            <section v-if="errored">
+                <p>Lo sentimos, no es posible obtener la información en este momento, por favor intente nuevamente mas
+                    tarde</p>
+            </section>
+            <section v-else>
+                <div v-if="loading">Cargando....
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only"></span>
+                    </div>
+                </div>
+                <div v-else>
+                    <a href="create.html" class="btn btn-success">Nuevo</a>
+                    <br><br>
+                    <table class="table table-striped table-responsive">
+                        <tr>
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Stock</th>
+                            <th>Foto</th>
+                            <th>Acciones</th>
+                        </tr>
+                        <tr v-for="producto in productos">
+                            <td>{{producto.id}}</td>
+                            <td>{{producto.nombre}}</td>
+                            <td>{{producto.precio}}</td>
+                            <td>{{producto.stock}}</td>
+                            <td>
+                                <img :src="producto.foto" :alt="'imagen:'+producto.nombre" width="100">                               
+                            </td>
+                            <td>
+                                <a :href="'update.html?id='+producto.id+'&nombre='+producto.nombre+'&precio='+producto.precio+'&stock='+producto.stock"
+                                    class="btn btn-primary">Modificar</a>
+                                <button v-on:click="eliminar(producto.id)" class="btn btn-danger">Eliminar</button>
+                            </td>
+                        </tr>
+                    </table>
+            </section>
         </div>
-    </div>
-
-    <div class="presenta">
-        <h2 id="consola">Presentando a Apollo: la mejor consola</h2>
-        <div class="maquina"></div>
-
-
-
-
-
-    </div>
-
-    <div id="sobre">
-        <h3>Sobre Nosotros</h3>
-        <p>Lorem ipsum dolor sit,
-            amet consectetur adipisicing elit. Similique itaque libero in voluptates iste?
-            Quas consectetur est exercitationem distinctio aspernatur accusantium vel!
-            Dolorum saepe delectus minima nobis cupiditate ratione illo?</p>
-        <h3>Localizado en: </h3>
-        <div id="map">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d297095.6831325223!2d-58.46293371747985!3d-34.64271615852859!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sar!4v1653703796711!5m2!1ses!2sar"
-                width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-        </div>
-    </div>
-
-    <h2  id="juegos" style="text-align:center ;background-color: black;color: white;font-family: Arial, Helvetica, sans-serif;" >Juegos</h2>
-
-    <div class="juegos">
-        <div class="card">
-            <img src="games/Circus.png" alt="" width="360" height="450">
-            <h4>Circus Charlie</h4>
-            <h5>1984</h5>
-        </div>
-        <div class="card">
-            <img src="games/Kong.jpg" alt="" width="360" height="450">
-            <h4>Donkey Kong</h4>
-            <h5>1981</h5>
-        </div>
-        <div class="card">
-            <img src="games/kung fu.jpg" alt="" width="360" height="450">
-            <h4>Kung-Fu Master</h4>
-            <h5>1984</h5>
-        </div>
-        <div class="card">
-            <img src="games/mario_3.jpg" alt="" width="360" height="450">
-            <h4>Super Mario Bros. 3</h4>
-            <h5>1988</h5>
-        </div>
-        <div class="card">
-            <img src="games/outrun.jpg" alt="" width="360" height="450">
-            <h4>Outrun</h4>
-            <h5>1986</h5>
-        </div>
-        <div class="card">
-            <img src="games/pacman.jpg" alt="" width="360" height="450">
-            <h4>Pac Man</h4>
-            <h5>1980</h5>
-        </div>
-        <div class="card">
-            <img src="games/sonic_1.jpg" alt="" width="360" height="450">
-            <h4>Sonic the Hedgehog</h4>
-            <h5>1991</h5>
-        </div>
-        <div class="card">
-            <img src="games/space.jpg" alt="" width="360" height="450">
-            <h4>Space Invaders</h4>
-            <h5>1978</h5>
-        </div>
-        <div class="card">
-            <img src="games/Street_Fighter_II.jpg" alt="" width="360" height="450">
-            <h4>Street Fighter II</h4>
-            <h5>1991</h5>
-        </div>
-        <div class="card">
-            <img src="games/Tetris.jpg" alt="" width="360" height="450">
-            <h4>Tetris</h4>
-            <h5>1984</h5>
-        </div>
-     
-    </div>
-
-
-
-
-
-
-
-
-
+    </main>
     <footer id="footer"></footer>
 
+    <script src="./js/main.js"></script>
+    <script src="main2.js"></script>
 
-    <script src="main.js"></script>
 </body>
 
 </html>
