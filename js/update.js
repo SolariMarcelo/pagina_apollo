@@ -24,7 +24,7 @@ function modificar() {
         foto:f
 
     }
-    let url = "http://localhost:5000/productos/"+id
+    let url = "https://apppagina.herokuapp.com/productos/"+id
     var options = {
         body: JSON.stringify(producto),
         method: 'PUT',
