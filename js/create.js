@@ -13,7 +13,7 @@ function guardar() {
         foto:f
 
     }
-    let url = "https://apppagina.herokuapp.com//productos"
+    let url = "https://apppagina.herokuapp.com/productos"
     var options = {
         body: JSON.stringify(producto),
         method: 'POST',
