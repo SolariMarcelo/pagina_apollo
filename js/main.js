@@ -7,7 +7,7 @@ if (document.getElementById("app")) {
             loading: true
         },
         created() {
-            var url = 'http://localhost:5000/productos'
+            var url = 'https://apppagina.herokuapp.com/productos'
             this.fetchData(url)
         },
         methods: {
@@ -23,7 +23,7 @@ if (document.getElementById("app")) {
                     })
             },
             eliminar(producto) {
-                const url = 'http://localhost:5000/producto/' + producto;
+                const url = 'https://apppagina.herokuapp.com/producto/' + producto;
                 var options = {
                     method: 'DELETE',
                 }
