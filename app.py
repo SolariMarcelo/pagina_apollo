@@ -2,6 +2,8 @@ from flask import Flask ,jsonify,request
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
+from flask import render_template
+
 app=Flask(__name__)
 CORS(app)
 # configuro la base de datos, con el nombre el usuario y la clave
@@ -38,6 +40,8 @@ productos_schema=ProductoSchema(many=True)  # multiples registros
 
 # programo los mapeos, o las rutas, o los endpoints, la URL
 @app.route('/')
+def index():
+    return render_template('index2.html', name=name)
 
 
 
