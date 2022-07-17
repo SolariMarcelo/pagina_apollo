@@ -38,9 +38,7 @@ productos_schema=ProductoSchema(many=True)  # multiples registros
 
 # programo los mapeos, o las rutas, o los endpoints, la URL
 @app.route('/')
-@app.route('/home')
-def index():
-    return ('index2.html')
+
 
 
 @app.route('/productos',methods=['GET'])
