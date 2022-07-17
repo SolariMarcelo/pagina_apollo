@@ -37,7 +37,9 @@ producto_schema=ProductoSchema()            # para crear un producto
 productos_schema=ProductoSchema(many=True)  # multiples registros
 
 # programo los mapeos, o las rutas, o los endpoints, la URL
-@app.route('/')
+@app.route('/',methods=['GET'])
+def index():
+    return "Hola mundo"
 
 
 @app.route('/productos',methods=['GET'])
@@ -95,5 +97,5 @@ def update_producto(id):
  
 # programa principal
 if __name__=='__main__':  
-    app.run(debug=True, port=5000)  
+    app.run(debug=False, port=5000)  
 
